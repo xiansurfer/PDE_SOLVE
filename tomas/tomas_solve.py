@@ -14,11 +14,12 @@ from icecream.icecream import ic
 
 start = 0
 end = 1
-num = 20
+num = 50
 
 step = (end-start)/num
 print(step)
 x = np.arange(start,end+step,step)
+ic(x)
 length = len(x)
 ic.enable()
 #创建解集
@@ -30,7 +31,7 @@ u[-1] = np.e
 a = np.ones(length)/(step**2)
 ic(a)
 #求系数b
-b = -2*np.ones(length)/(step**2) + x
+b = 2*np.ones(length)/(step**2) + x
 ic(b)
 #求系数c
 c = a
@@ -55,6 +56,7 @@ for i in range(1,length,1):
     f[i] = (d[i]+a[i]*f[i-1])/(b[i]-a[i]*e[i-1])
 ic(f)
 
+u[-1] =0
 for i in range(num-1,0,-1):
     print(u[i+1])
     u[i] = e[i] * u[i+1] + f[i]
